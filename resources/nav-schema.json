@@ -1,0 +1,47 @@
+{
+    "title" : "JSON Navigation Data",
+    "description" : "A schema describing the data used to navigate a JSON document",
+    "$id" : "http://sabjohnso.github.io/2020/nav-schema.json",
+    "$schema" : "http://json-schema.org/draft-07/schema#",
+    "type" : "array",
+    "items" : {
+        {},
+        {"$ref" : "#/definitions/Context"}
+    },
+    "required" : ["value", "tainted", "context"],
+    "additionalProperties" : false,
+    "definitions" : {
+        "Key" : {
+            "oneOf" : [
+                {"type" : "string"},
+                {"type" : "integer", "minimum" : "0"}
+            ]
+        },
+        "Context" : {
+            "type" : "array",
+            "items" : {"$ref" : "#/definitions/ContextElement"}
+        },
+        "ContextElement" : {
+            "oneOf" : [
+                {"$ref" : "#/definitions/ArrayPointer"},
+                {"$ref" : "#/definitions/ObjectPointer"}
+            ]
+        },
+        "ArrayPointer" : {
+            "type" : "array",
+            "items" : [
+                {"type" : "boolean"},
+                {"type" : "integer", "minimum" : 0},
+                {"type" : "array"}
+            ]
+        },
+        "ObjectPointer" : {
+            "type" : "array",
+            "items" : [
+                {"type" : "boolean"},
+                {"type" : "string"},
+                {"type" : "object"}
+            ]
+        }
+    }
+}

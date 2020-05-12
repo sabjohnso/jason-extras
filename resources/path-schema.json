@@ -1,0 +1,13 @@
+{
+    "title" : "JSON Path Data",
+    "description" : "A schema decribing paths in JSON documents",
+    "$id" : "http://sabjohnso.github.io/2020/path-schema.json",
+    "$schema" : "http://json-schema.org/draft-07/schema#",
+    "type" : "array",
+    "items" : {
+        "oneOf" : [
+            {"type" : "string"},
+            {"type" : "integer", "minimum" : 0}
+        ]
+    }
+}
